@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Billing Calculator</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    margin:0;
+    font-family:'Segoe UI',sans-serif;
+    background:
+    linear-gradient(rgba(255,255,255,0.25),rgba(255,255,255,0.25)),
+    url("https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1600&q=80");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+}
+header{
+    height:70px;
+    background:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 80px;
+    box-shadow:0 2px 10px rgba(0,0,0,.1);
+}
+.logo{
+    font-size:32px;
+    font-weight:bold;
+    color:#ff3e83;
+    font-style:italic;
+}
+nav a{
+    text-decoration:none;
+    margin:0 18px;
+    color:#333;
+    font-weight:600;
+}
+nav a:hover{
+    color:#ff3e83;
+}
+.search{
+    width:300px;
+    padding:10px;
+    border-radius:30px;
+    border:1px solid #ddd;
+}
+.login{
+    background:#ff3e83;
+    color:white;
+    border:none;
+    padding:10px 22px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:15px;
+}
+.container{
+    width:1100px;
+    margin:50px auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.left{
+    width:48%;
+}
+.left h1{
+    font-size:48px;
+    color:#333;
+}
+.left h1 span{
+    color:#ff3e83;
+}
+.left p{
+    color:#666;
+    margin:20px 0;
+    line-height:28px;
+}
+.left button{
+    background:#ff3e83;
+    color:white;
+    border:none;
+    padding:14px 35px;
+    border-radius:30px;
+    font-size:18px;
+}
+.card{
+    width:420px;
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+}
+.card h2{
+    text-align:center;
+    margin-bottom:25px;
+    color:#ff3e83;
+}
+.card input{
+    width:100%;
+    padding:14px;
+    margin:12px 0;
+    border:1px solid #ddd;
+    border-radius:10px;
+    outline:none;
+    font-size:16px;
+}
+.card input:focus{
+    border:2px solid #ff3e83;
+}
+.card button{
+    width:100%;
+    padding:14px;
+    background:#ff3e83;
+    color:white;
+    border:none;
+    border-radius:10px;
+    font-size:18px;
+    cursor:pointer;
+    transition:.3s;
+}
+.card button:hover{
+    background:#e91e63;
+}
+#result{
+    margin-top:20px;
+    background:#fff5f9;
+    padding:18px;
+    border-radius:12px;
+    line-height:2;
+    font-size:15px;
+}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">BILLIFY</div>
+<nav>
+<a href="#">Home</a>
+<a href="#">Products</a>
+<a href="#">Billing</a>
+<a href="#">Contact</a>
+</nav>
+<div>
+<input class="search" type="text" placeholder="Search Product">
+<button class="login">Login</button>
+</div>
+</header>
+<div class="container">
+<div class="left">
+<h1>Smart <span>Billing</span><br>Calculator</h1>
+<p>
+Generate professional bills instantly using JavaScript.
+Enter customer details, product price and quantity,
+and calculate GST automatically.
+</p>
+<button>Easy Billing</button>
+</div>
+<div class="card">
+<h2>Generate Bill</h2>
+<input type="text" id="name" placeholder="Customer Name">
+<input type="text" id="product" placeholder="Product Name">
+<input type="number" id="price" placeholder="Price">
+<input type="number" id="quantity" placeholder="Quantity">
+<button onclick="calculateBills()">Generate Bill</button>
+<div id="result"></div>
+</div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
