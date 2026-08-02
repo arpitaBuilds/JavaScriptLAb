@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vehicle Registration Validation</title>
+
+    <style>
+
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family:Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    body{
+        height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        background:#1b1b2f;
+    }
+
+    .box{
+        width:420px;
+        background:#ffffff;
+        padding:35px;
+        border-radius:15px;
+        box-shadow:0 0 25px #ff9800;
+        text-align:center;
+    }
+
+    h2{
+        color:#ff6f00;
+        margin-bottom:20px;
+    }
+
+    label{
+        display:block;
+        text-align:left;
+        font-size:17px;
+        font-weight:bold;
+        color:#333;
+        margin-bottom:10px;
+    }
+
+    input[type="text"]{
+        width:100%;
+        padding:12px;
+        border:2px solid #ff9800;
+        border-radius:8px;
+        outline:none;
+        font-size:16px;
+    }
+
+    input[type="text"]:focus{
+        border-color:#ff5722;
+        box-shadow:0 0 10px #ff9800;
+    }
+
+    input[type="button"]{
+        width:100%;
+        margin-top:20px;
+        padding:12px;
+        border:none;
+        border-radius:8px;
+        background:#ff9800;
+        color:white;
+        font-size:17px;
+        cursor:pointer;
+        transition:.3s;
+    }
+
+    input[type="button"]:hover{
+        background:#e65100;
+        transform:scale(1.05);
+    }
+
+    </style>
+
+    <script src="script1.js"></script>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<h2>Vehicle Registration Validation</h2>
+
+<label>Enter Registration Number</label>
+
+<input type="text" id="regno" placeholder="MH12AB1234">
+
+<input type="button" value="Validate" onclick="checkVehicle()">
+
+</div>
+
+</body>
+</html>

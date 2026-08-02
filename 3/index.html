@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>College Student Result System</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#5B2CC9,#7C4DFF,#3F51B5);
+    min-height:100vh;
+}
+
+/* Navbar */
+
+header{
+    width:100%;
+    height:75px;
+    background:rgba(255,255,255,.1);
+    backdrop-filter:blur(15px);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 70px;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:1000;
+}
+
+.logo{
+    color:white;
+    font-size:30px;
+    font-weight:bold;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:30px;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#FFD54F;
+}
+
+/* Hero */
+
+.container{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:60px;
+    padding:120px 60px;
+    flex-wrap:wrap;
+
+}
+
+.left{
+
+    color:white;
+    width:500px;
+
+}
+
+.left h1{
+
+    font-size:50px;
+    margin-bottom:20px;
+
+}
+
+.left p{
+
+    line-height:1.8;
+    opacity:.95;
+
+}
+
+.left button{
+
+    margin-top:30px;
+    padding:14px 35px;
+    border:none;
+    border-radius:10px;
+    background:white;
+    color:#5B2CC9;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+
+}
+
+.right{
+
+    width:470px;
+    background:white;
+    border-radius:20px;
+    padding:35px;
+    box-shadow:0 20px 50px rgba(0,0,0,.25);
+
+}
+
+.right h2{
+
+    text-align:center;
+    color:#5B2CC9;
+    margin-bottom:20px;
+
+}
+
+label{
+
+    display:block;
+    margin-top:14px;
+    margin-bottom:8px;
+    font-weight:600;
+
+}
+
+input{
+
+    width:100%;
+    padding:12px;
+    border:2px solid #ddd;
+    border-radius:8px;
+    outline:none;
+    transition:.3s;
+
+}
+
+input:focus{
+
+    border-color:#5B2CC9;
+
+}
+
+button.calculate{
+
+    width:100%;
+    margin-top:25px;
+    padding:14px;
+    border:none;
+    border-radius:10px;
+    background:#5B2CC9;
+    color:white;
+    font-size:17px;
+    cursor:pointer;
+    transition:.3s;
+
+}
+
+button.calculate:hover{
+
+    background:#4527A0;
+
+}
+
+#grade{
+
+    background:#F3F3F3;
+    font-weight:bold;
+    color:#5B2CC9;
+    text-align:center;
+
+}
+
+/* Result */
+
+.result{
+
+    margin-top:20px;
+    background:#F8F6FF;
+    border-left:5px solid #5B2CC9;
+    border-radius:10px;
+    padding:18px;
+    display:none;
+
+}
+
+.result table{
+
+    width:100%;
+    border-collapse:collapse;
+
+}
+
+.result td{
+
+    padding:8px;
+    border-bottom:1px solid #ddd;
+
+}
+
+.result td:first-child{
+
+    font-weight:bold;
+    color:#5B2CC9;
+
+}
+
+.progress{
+
+    margin-top:15px;
+    width:100%;
+    height:12px;
+    background:#ddd;
+    border-radius:30px;
+    overflow:hidden;
+
+}
+
+.bar{
+
+    width:0%;
+    height:100%;
+    background:linear-gradient(to right,#5B2CC9,#9C27B0);
+    transition:1s;
+
+}
+
+footer{
+
+    text-align:center;
+    color:white;
+    padding:20px;
+    margin-top:30px;
+
+}
+
+@media(max-width:900px){
+
+.container{
+
+flex-direction:column;
+
+}
+
+.left{
+
+text-align:center;
+
+}
+
+.left h1{
+
+font-size:38px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">Marks Calculator</div>
+
+<nav>
+
+<a href="#">Home</a>
+<a href="#">Courses</a>
+<a href="#">Students</a>
+<a href="#">Contact</a>
+
+</nav>
+
+</header>
+
+<div class="container">
+
+<div class="left">
+
+<h1>Student Result Management System</h1>
+
+<p>
+
+Enter subject-wise marks to calculate
+Total Marks, Percentage and Grade instantly.
+
+This project is developed using
+HTML, CSS and JavaScript.
+
+</p>
+
+<button>College Project</button>
+
+</div>
+
+<div class="right">
+
+<h2>Student Result</h2>
+
+<label>Student Name</label>
+<input type="text" id="name">
+
+<label>English</label>
+<input type="number" id="eng">
+
+<label>Mathematics</label>
+<input type="number" id="math">
+
+<label>Science</label>
+<input type="number" id="sci">
+
+<label>Social Science</label>
+<input type="number" id="sst">
+
+<label>Computer</label>
+<input type="number" id="comp">
+
+<button class="calculate" onclick="gradeSystem()">
+Calculate Result
+</button>
+
+<br><br>
+
+<label>Grade</label>
+
+<input type="text" id="grade" readonly>
+
+<div class="result" id="result">
+
+<table>
+
+<tr>
+
+<td>Name</td>
+
+<td id="rname"></td>
+
+</tr>
+
+<tr>
+
+<td>Total</td>
+
+<td id="rtotal"></td>
+
+</tr>
+
+<tr>
+
+<td>Percentage</td>
+
+<td id="rper"></td>
+
+</tr>
+
+<tr>
+
+<td>Grade</td>
+
+<td id="rgrade"></td>
+
+</tr>
+
+</table>
+
+<div class="progress">
+
+<div class="bar" id="bar"></div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<footer>
+
+Designed by Arpita Waghmare
+
+</footer>
+<script>
+
+function gradeSystem(){
+
+    let name = document.getElementById("name").value.trim();
+
+    let eng = Number(document.getElementById("eng").value);
+    let math = Number(document.getElementById("math").value);
+    let sci = Number(document.getElementById("sci").value);
+    let sst = Number(document.getElementById("sst").value);
+    let comp = Number(document.getElementById("comp").value);
+
+    if(name==""){
+        alert("Please enter Student Name");
+        return;
+    }
+
+    if(
+        document.getElementById("eng").value=="" ||
+        document.getElementById("math").value=="" ||
+        document.getElementById("sci").value=="" ||
+        document.getElementById("sst").value=="" ||
+        document.getElementById("comp").value==""
+    ){
+        alert("Please enter marks for all subjects.");
+        return;
+    }
+
+    if(
+        eng<0 || eng>100 ||
+        math<0 || math>100 ||
+        sci<0 || sci>100 ||
+        sst<0 || sst>100 ||
+        comp<0 || comp>100
+    ){
+        alert("Marks should be between 0 and 100.");
+        return;
+    }
+
+    let total = eng + math + sci + sst + comp;
+    let percentage = total / 5;
+    let grade = "";
+
+    if(percentage >= 90){
+        grade = "A+";
+    }
+    else if(percentage >= 80){
+        grade = "A";
+    }
+    else if(percentage >= 70){
+        grade = "B";
+    }
+    else if(percentage >= 60){
+        grade = "C";
+    }
+    else if(percentage >= 35){
+        grade = "Pass";
+    }
+    else{
+        grade = "Fail";
+    }
+
+    // Grade Input
+    document.getElementById("grade").value = grade;
+
+    // Show Result Card
+    document.getElementById("result").style.display = "block";
+
+    document.getElementById("rname").innerHTML = name;
+    document.getElementById("rtotal").innerHTML = total + " / 500";
+    document.getElementById("rper").innerHTML = percentage.toFixed(2) + "%";
+    document.getElementById("rgrade").innerHTML = grade;
+
+    // Progress Bar
+    document.getElementById("bar").style.width = percentage + "%";
+
+}
+
+</script>
+
+</body>
+</html>
