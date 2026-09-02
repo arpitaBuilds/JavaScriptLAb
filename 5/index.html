@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping Cart Calculator</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #ffe4ec, #f8d7e0);
+            color: #333;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #c2185b;
+        }
+
+        .bill {
+            border: 2px dashed #d81b60;
+            border-radius: 12px;
+            padding: 14px;
+            background: #fffdfd;
+        }
+
+        .generate-btn {
+            background: #d81b60;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .bill-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px dashed #e4c1cf;
+            padding-bottom: 8px;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .bill-preview {
+            background: #fff;
+            border: 1px solid #f2d0dc;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .bill-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 4px 0;
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 20px;
+        }
+
+        .panel {
+            background: #fff5f8;
+            padding: 16px;
+            border-radius: 12px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .product-card {
+            background: white;
+            border: 1px solid #f2d0dc;
+            border-radius: 10px;
+            padding: 14px;
+        }
+
+        .product-card h3 {
+            margin: 0 0 8px;
+            font-size: 18px;
+        }
+
+        .price {
+            font-weight: bold;
+            color: #d81b60;
+            margin-bottom: 10px;
+        }
+
+        .category-tag {
+            display: inline-block;
+            margin-top: 6px;
+            padding: 4px 8px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: bold;
+            background: #ffe0ea;
+            color: #b0004f;
+        }
+
+        button {
+            border: none;
+            background: #e91e63;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #c2185b;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+
+        .controls button {
+            margin: 0 4px;
+            padding: 4px 8px;
+        }
+
+        .summary {
+            margin-top: 16px;
+            padding-top: 10px;
+            border-top: 1px solid #e4c1cf;
+        }
+
+        .summary p {
+            display: flex;
+            justify-content: space-between;
+            margin: 6px 0;
+        }
+
+        .total {
+            font-size: 20px;
+            font-weight: bold;
+            color: #c2185b;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px 0;
+            color: #8e3f62;
+            font-weight: bold;
+        }
+
+        @media (max-width: 760px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Shopping Cart Calculator</h1>
+        <div class="layout">
+            <div class="panel">
+                <h2>Products</h2>
+                <div id="productList" class="product-grid"></div>
+            </div>
+
+            <div class="panel">
+                <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
+                    <h2 style="margin: 0;">Your Cart</h2>
+                    <button class="generate-btn" id="generateBtn">Generate Bill</button>
+                </div>
+                <div class="bill">
+                    <div class="bill-header">
+                        <div>
+                            <strong>My Shop</strong><br />
+                            <span>Receipt / Bill</span>
+                        </div>
+                        <div>
+                            <div id="billDate">Date</div>
+                            <div id="billNumber">Bill No</div>
+                        </div>
+                    </div>
+                    <div id="billPreview" class="bill-preview"></div>
+                    <div id="cartItems"></div>
+                    <div class="summary">
+                        <p><span>Subtotal</span><span id="subtotal">₹0.00</span></p>
+                        <p><span>Discount</span><span id="discount">₹0.00</span></p>
+                        <p class="total"><span>Total</span><span id="total">₹0.00</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">Made by Arpita Waghmare</div>
+    </div>
+
+    <script>
+        const products = [
+            { id: 1, name: 'Laptop', price: 45999 },
+            { id: 2, name: 'Mouse', price: 799 },
+            { id: 3, name: 'Keyboard', price: 1999 },
+            { id: 4, name: 'Headphones', price: 2499 }
+        ];
+
+        let cart = [];
+
+        const productList = document.getElementById('productList');
+        const cartItems = document.getElementById('cartItems');
+        const billPreview = document.getElementById('billPreview');
+        const subtotalEl = document.getElementById('subtotal');
+        const discountEl = document.getElementById('discount');
+        const totalEl = document.getElementById('total');
+        const billDateEl = document.getElementById('billDate');
+        const billNumberEl = document.getElementById('billNumber');
+        const generateBtn = document.getElementById('generateBtn');
+
+        function formatCurrency(value) {
+            return `₹${value.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+        }
+
+        function getCategory(price) {
+            return price > 5000 ? 'Expensive Product' : 'Regular Product';
+        }
+
+        function renderProducts() {
+            productList.innerHTML = products.map(product => `
+                <div class="product-card">
+                    <h3>${product.name}</h3>
+                    <div class="price">${formatCurrency(product.price)}</div>
+                    <div class="category-tag">${getCategory(product.price)}</div>
+                    <br />
+                    <button onclick="addToCart(${product.id})">Add to Cart</button>
+                </div>
+            `).join('');
+        }
+
+        function addToCart(productId) {
+            const product = products.find(item => item.id === productId);
+
+            if (!product) return;
+
+            const existingItem = cart.find(item => item.id === productId);
+
+            if (existingItem) {
+                cart = cart.map(item =>
+                    item.id === productId ? { ...item, quantity: item.quantity + 1 } : item
+                );
+            } else {
+                cart = [...cart, { ...product, quantity: 1 }];
+            }
+
+            renderCart();
+        }
+
+        function increaseQty(productId) {
+            cart = cart.map(item =>
+                item.id === productId ? { ...item, quantity: item.quantity + 1 } : item
+            );
+            renderCart();
+        }
+
+        function decreaseQty(productId) {
+            cart = cart.map(item =>
+                item.id === productId && item.quantity > 1
+                    ? { ...item, quantity: item.quantity - 1 }
+                    : item
+            );
+
+            cart = cart.filter(item => item.quantity > 0);
+            renderCart();
+        }
+
+        function removeItem(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            renderCart();
+        }
+
+        function calculateSummary() {
+            const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+            let discountRate = 0;
+
+            if (subtotal > 3000 && subtotal < 5000) {
+                discountRate = 0.03;
+            } else if (subtotal >= 5000) {
+                discountRate = 0.05;
+            }
+
+            const discount = subtotal * discountRate;
+            const total = subtotal - discount;
+
+            return { subtotal, discount, total, discountRate };
+        }
+
+        function generateBill() {
+            if (cart.length === 0) {
+                billPreview.innerHTML = '<p style="margin:0;">Please add products to generate a bill.</p>';
+                return;
+            }
+
+            const { subtotal, discount, total, discountRate } = calculateSummary();
+            const today = new Date();
+            billDateEl.textContent = `Date: ${today.toLocaleDateString('en-IN')}`;
+            billNumberEl.textContent = `Bill No: INV-${Math.floor(1000 + Math.random() * 9000)}`;
+
+            billPreview.innerHTML = `
+                <div class="bill-row"><span>Items</span><span>${cart.length}</span></div>
+                <div class="bill-row"><span>Subtotal</span><span>${formatCurrency(subtotal)}</span></div>
+                <div class="bill-row"><span>Discount</span><span>${discountRate === 0 ? 'No discount' : `${(discountRate * 100).toFixed(0)}%`}</span></div>
+                <div class="bill-row"><strong>Payable</strong><strong>${formatCurrency(total)}</strong></div>
+            `;
+        }
+
+        function renderCart() {
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p>Your cart is empty.</p>';
+                billPreview.innerHTML = '';
+            } else {
+                cartItems.innerHTML = cart.map(item => `
+                    <div class="cart-item">
+                        <div>
+                            <strong>${item.name}</strong><br />
+                            ${formatCurrency(item.price)} x ${item.quantity}<br />
+                            <span class="category-tag">${getCategory(item.price)}</span>
+                        </div>
+                        <div class="controls">
+                            <button onclick="decreaseQty(${item.id})">-</button>
+                            <button onclick="increaseQty(${item.id})">+</button>
+                            <button onclick="removeItem(${item.id})">Remove</button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            const { subtotal, discount, total } = calculateSummary();
+            subtotalEl.textContent = formatCurrency(subtotal);
+            discountEl.textContent = formatCurrency(discount);
+            totalEl.textContent = formatCurrency(total);
+        }
+
+        generateBtn.addEventListener('click', generateBill);
+        renderProducts();
+        renderCart();
+    </script>
+</body>
+</html>

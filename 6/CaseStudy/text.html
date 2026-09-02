@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Smart String Studio</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, Segoe UI, sans-serif;
+      background: radial-gradient(circle at 15% 20%, #8b5cf633, transparent 30%),
+        radial-gradient(circle at 85% 80%, #06b6d433, transparent 30%), #08111f;
+      color: #e5eefc;
+      display: grid;
+      place-items: center;
+      padding: 28px;
+    }
+
+    .card {
+      width: min(600px, 100%);
+      padding: 30px;
+      border: 1px solid #ffffff1c;
+      border-radius: 28px;
+      background: #101a2bd9;
+      backdrop-filter: blur(18px);
+      box-shadow: 0 25px 70px #0009;
+    }
+
+    .badge {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.4px;
+      color: #67e8f9;
+    }
+
+    .icon {
+      font-size: 35px;
+      margin-top: 14px;
+    }
+
+    .title {
+      font-size: 32px;
+      margin: 5px 0;
+    }
+
+    .desc {
+      color: #9fb0c8;
+      margin-bottom: 24px;
+    }
+
+    label {
+      font-size: 14px;
+      font-weight: 700;
+      display: block;
+      margin: 14px 0 8px;
+    }
+
+    textarea,
+    select {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #34445e;
+      border-radius: 15px;
+      background: #0a1220;
+      color: #fff;
+      font-size: 15px;
+      outline: 0;
+    }
+
+    textarea {
+      height: 130px;
+      resize: vertical;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 16px;
+      border: 0;
+      border-radius: 15px;
+      background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+      color: #fff;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    #result {
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 17px;
+      background: #0a1220;
+      border: 1px solid #263650;
+      line-height: 1.8;
+    }
+
+    .stat {
+      display: inline-block;
+      margin: 5px;
+      padding: 8px 11px;
+      background: #172238;
+      border-radius: 10px;
+      color: #bae6fd;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="card">
+    <div class="badge">CASE STUDY • STRING OPERATIONS</div>
+    <div class="icon">⌘</div>
+    <h1 class="title">Smart String Studio</h1>
+    <p class="desc">Reverse text or perform quick vowel analysis with JavaScript.</p>
+
+    <label>Enter String / Paragraph</label>
+    <textarea id="text" placeholder="Type something beautiful..."></textarea>
+
+    <label>Select Operation</label>
+    <select id="operation">
+      <option value="reverse">Reverse String</option>
+      <option value="vowels">Count Vowels</option>
+    </select>
+
+    <button onclick="performOperation()">Run Operation ✦</button>
+    <div id="result">Result will appear here.</div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

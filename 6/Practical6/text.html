@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Text Lab - Practical 6</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, Segoe UI, sans-serif;
+      color: #eef2ff;
+      background: radial-gradient(circle at 10% 15%, #3730a355, transparent 28%),
+        radial-gradient(circle at 90% 85%, #0891b255, transparent 30%), #070b17;
+      display: grid;
+      place-items: center;
+      padding: 28px;
+    }
+
+    .card {
+      width: min(720px, 100%);
+      padding: 32px;
+      border: 1px solid #ffffff1c;
+      border-radius: 28px;
+      background: #111827d9;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 25px 70px #0008;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: #6366f126;
+      color: #a5b4fc;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    h1 {
+      font-size: 34px;
+      margin: 16px 0 6px;
+    }
+
+    .sub {
+      color: #9ca8bf;
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      margin: 15px 0 8px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    textarea,
+    select {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #334155;
+      border-radius: 15px;
+      background: #0b1120;
+      color: white;
+      font-size: 15px;
+      outline: 0;
+    }
+
+    textarea {
+      height: 145px;
+      resize: vertical;
+    }
+
+    textarea:focus,
+    select:focus {
+      border-color: #818cf8;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 17px;
+      padding: 14px;
+      border: 0;
+      border-radius: 15px;
+      background: linear-gradient(135deg, #6366f1, #06b6d4);
+      color: white;
+      font-weight: 800;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    #result {
+      margin-top: 22px;
+      padding: 19px;
+      border-radius: 18px;
+      background: #0b1120;
+      border: 1px solid #26324b;
+      line-height: 1.9;
+    }
+
+    .pill {
+      display: inline-block;
+      margin: 5px;
+      padding: 8px 11px;
+      border-radius: 10px;
+      background: #172033;
+      color: #c7d2fe;
+    }
+
+    .good {
+      color: #5eead4;
+    }
+
+    .bad {
+      color: #fb7185;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="card">
+    <span class="tag">PRACTICAL 06 • TEXT PROCESSING</span>
+    <h1>AI Text Lab ✦</h1>
+    <p class="sub">Regex, strings and smart text analysis in one place.</p>
+
+    <label>Input Text</label>
+    <textarea id="inputText" placeholder="Try: Hello AI! Email: student@gmail.com. Score: 95"></textarea>
+
+    <label>Analysis Mode</label>
+    <select id="operation">
+      <option value="email">Validate Email</option>
+      <option value="extract">Regex Data Extraction</option>
+      <option value="vowel">Find Vowels</option>
+      <option value="analysis">Text Statistics</option>
+      <option value="reverse">Reverse Text</option>
+      <option value="palindrome">Palindrome Check</option>
+    </select>
+
+    <button onclick="performOperation()">Run Text Analysis →</button>
+    <section id="result">Your result will appear here.</section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

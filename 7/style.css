@@ -1,0 +1,135 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #e7579f, #e497d0);
+    padding: 10px;
+}
+
+.todo-app {
+    width: 100%;
+    max-width: 340px;
+    max-height: 900px;
+    background: #fff;
+    margin: 100px auto 20px;
+    padding: 40px 30px 70px;
+    border-radius: 10px;
+}
+
+.todo-app h2 {
+    color: hsl(321, 70%, 59%);
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.todo-app h2 img {
+    width: 30px;
+    margin-left: 10px;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #edeef0;
+    border-radius: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    padding: 14px 0;
+}
+
+button {
+    background: #df078c;
+    color: #fff;
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+/* Task List */
+#list-container {
+    list-style: none;
+    margin-top: 24px;
+}
+
+#list-container li {
+    position: relative;
+    min-height: 42px;
+    padding: 10px 88px 10px 34px;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+#list-container li::before {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #002765;
+    border-radius: 50%;
+    left: 2px;
+    top: 10px;
+}
+
+#list-container li.checked {
+    color: #888;
+    text-decoration: line-through;
+}
+
+#list-container li.checked::before {
+    background: #c71e5c;
+    box-shadow: inset 0 0 0 4px #fff;
+}
+
+/* Delete Button */
+.delete-button {
+    position: absolute;
+    right: 0;
+    top: 4px;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    color: #555;
+    background: transparent;
+    font-size: 24px;
+}
+
+.delete-button:hover {
+    color: #d11a2a;
+}
+
+/* Edit Button */
+.edit-button {
+    position: absolute;
+    right: 32px;
+    top: 8px;
+    padding: 4px 7px;
+    color: #df078c;
+    background: transparent;
+    border: 1px solid #df078c;
+    border-radius: 5px;
+    font-size: 11px;
+}
+
+.edit-button:hover {
+    color: #fff;
+    background: #df078c;
+}
