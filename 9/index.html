@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalStorage and SessionStorage</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="theme-box">
+        <h1>Theme Preferences</h1>
+        <p class="intro">Choose a theme and save your preference in the browser.</p>
+
+        <div class="button-row">
+            <button type="button" onclick="setTheme('light')">Light Theme</button>
+            <button type="button" onclick="setTheme('dark')">Dark Theme</button>
+            <button type="button" class="clear-button" onclick="clearTheme()">Clear Preferences</button>
+        </div>
+
+        <p id="message" aria-live="polite"></p>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

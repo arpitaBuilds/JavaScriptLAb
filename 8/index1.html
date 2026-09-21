@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Forge Fitness | Member Profile</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+        :root {
+            --forest: #123c31;
+            --deep: #0b2b24;
+            --lime: #c9f36b;
+            --paper: #f7faf4;
+            --ink: #18352c;
+            --muted: #6d7e76;
+            --line: #dbe7df;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            padding: 42px 20px;
+            color: var(--ink);
+            font-family: 'DM Sans', sans-serif;
+            background-color: #b9d8c5;
+            background-image: radial-gradient(circle at 8% 12%, rgba(201, 243, 107, .6), transparent 25%), linear-gradient(135deg, #dcebd8, #f7f8ed 48%, #a9d1bd);
+        }
+
+        h2 {
+            width: 760px;
+            max-width: 100%;
+            margin: 0 auto 22px;
+            color: var(--forest);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(30px, 5vw, 46px);
+            line-height: 1;
+            letter-spacing: -1px;
+        }
+
+        h2::before {
+            content: 'FORGE FITNESS / MEMBER PROFILE';
+            display: block;
+            margin-bottom: 12px;
+            color: #4e7c60;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        form {
+            width: 760px;
+            max-width: 100%;
+            margin: auto;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, .9);
+            border-radius: 22px;
+            box-shadow: 0 24px 60px rgba(19, 64, 46, .18);
+        }
+
+        table { width: 100%; border-collapse: collapse; background: rgba(247, 250, 244, .96); }
+        table, th, td { border: 1px solid var(--line); }
+        th { padding: 15px 20px; color: #dff3dc; text-align: left; background: var(--forest); font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; }
+        td { padding: 16px 20px; vertical-align: middle; }
+        .label { width: 34%; color: #3a5b4d; font-weight: 700; background: #edf5eb; }
+        input[type="text"], select, textarea { width: 100%; color: var(--ink); font: inherit; background: #fff; border: 1px solid var(--line); border-radius: 10px; outline: none; transition: border-color .2s, box-shadow .2s, background .2s; }
+        input[type="text"] { height: 42px; padding: 8px 12px; }
+        select { height: 42px; padding: 4px 12px; }
+        textarea { height: 105px; margin-top: 9px; padding: 11px 12px; resize: vertical; }
+        input:focus, select:focus, textarea:focus { border-color: #70a54c; box-shadow: 0 0 0 4px rgba(112, 165, 76, .14); }
+        input[type="radio"], input[type="checkbox"] { width: 17px; height: 17px; margin: 0 5px 0 0; vertical-align: middle; accent-color: var(--forest); }
+        .button-cell { padding: 18px 20px; text-align: right; background: #edf5eb; }
+        button { padding: 13px 23px; border: 0; border-radius: 10px; color: var(--deep); background: var(--lime); font: 700 14px 'DM Sans', sans-serif; cursor: pointer; transition: transform .2s, background .2s; }
+        button:hover { background: #b9e657; transform: translateY(-2px); }
+        #message { width: 760px; max-width: 100%; min-height: 24px; margin: 15px auto 0; padding: 0 4px; font-weight: 700; }
+        .focus { background-color: #f5fbdc !important; }
+
+        @media (max-width: 650px) {
+            body { padding: 28px 12px; }
+            h2 { margin-bottom: 18px; }
+            td, th { padding: 12px 10px; }
+            .label { width: 38%; }
+            .button-cell { text-align: left; }
+            button { width: 100%; }
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+    <h2>Gym Admission Form</h2>
+
+
+    <form id="gymForm">
+
+        <table>
+
+            <!-- Heading -->
+
+            <tr>
+
+                <th>Name</th>
+
+                <th>Value</th>
+
+            </tr>
+
+
+            <!-- Name -->
+
+            <tr>
+
+                <td class="label">
+                    Name
+                </td>
+
+                <td>
+
+                    <input
+                        type="text"
+                        id="name"
+                    >
+
+                </td>
+
+            </tr>
+
+
+            <!-- Sex -->
+
+            <tr>
+
+                <td class="label">
+                    Sex
+                </td>
+
+                <td>
+
+                    <input
+                        type="radio"
+                        name="gender"
+                        value="Male"
+                    >
+
+                    Male
+
+
+                    <br>
+
+
+                    <input
+                        type="radio"
+                        name="gender"
+                        value="Female"
+                    >
+
+                    Female
+
+                </td>
+
+            </tr>
+
+
+            <!-- Eye Color -->
+
+            <tr>
+
+                <td class="label">
+                    Eye color
+                </td>
+
+                <td>
+
+                    <select id="eyeColor">
+
+                        <option value="">
+                            Select
+                        </option>
+
+                        <option value="Black">
+                            Black
+                        </option>
+
+                        <option value="Brown">
+                            Brown
+                        </option>
+
+                        <option value="Blue">
+                            Blue
+                        </option>
+
+                        <option value="Green">
+                            Green
+                        </option>
+
+                    </select>
+
+                </td>
+
+            </tr>
+
+
+            <!-- Checkboxes -->
+
+            <tr>
+
+                <td class="label">
+                    Check all that apply
+                </td>
+
+                <td>
+
+                    <input
+                        type="checkbox"
+                        id="height"
+                    >
+
+                    Over 6 feet tall
+
+
+                    <br>
+
+
+                    <input
+                        type="checkbox"
+                        id="weight"
+                    >
+
+                    Over 200 Pounds
+
+                </td>
+
+            </tr>
+
+
+            <!-- Athletic Ability -->
+
+            <tr>
+
+                <td
+                    colspan="2"
+                    class="label"
+                >
+
+                    Describe your athletic ability:
+
+                    <br>
+
+                    <textarea
+                        id="ability"
+                    ></textarea>
+
+                </td>
+
+            </tr>
+
+
+            <!-- Button -->
+
+            <tr>
+
+                <td
+                    colspan="2"
+                    class="button-cell"
+                >
+
+                    <button type="submit">
+
+                        Enter my information
+
+                    </button>
+
+                </td>
+
+            </tr>
+
+
+        </table>
+
+    </form>
+
+
+    <div id="message"></div>
+
+
+    <script src="script1.js"></script>
+
+</body>
+
+</html>

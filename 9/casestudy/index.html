@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Seminar Schedule Planner</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<main class="page-content">
+		<header class="page-header">
+			<p class="small-heading">XML SEMINAR</p>
+			<h1>Seminar Schedule Planner</h1>
+			<p class="intro-text">Click any time or topic to view its schedule details.</p>
+		</header>
+
+		<div class="table-wrapper">
+			<table>
+				<thead>
+					<tr>
+						<th rowspan="2">Day</th>
+						<th colspan="2">Schedule</th>
+						<th rowspan="2">Topic</th>
+					</tr>
+					<tr>
+						<th>Begin</th>
+						<th>End</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td rowspan="2">Monday</td>
+						<td rowspan="2" class="clickable begin-time" data-day="Monday" data-topic="Introduction to XML / Validity: DTD and Relax NG" data-begin="8:00 a.m." data-end="5:00 p.m.">8:00 a.m.</td>
+						<td rowspan="2" class="clickable end-time" data-day="Monday" data-topic="Introduction to XML / Validity: DTD and Relax NG" data-begin="8:00 a.m." data-end="5:00 p.m.">5:00 p.m.</td>
+						<td class="clickable topic-cell" data-day="Monday" data-topic="Introduction to XML" data-begin="8:00 a.m." data-end="5:00 p.m.">Introduction to XML</td>
+					</tr>
+					<tr>
+						<td class="clickable topic-cell" data-day="Monday" data-topic="Validity: DTD and Relax NG" data-begin="8:00 a.m." data-end="5:00 p.m.">Validity: DTD and Relax NG</td>
+					</tr>
+					<tr>
+						<td rowspan="3">Tuesday</td>
+						<td class="clickable begin-time" data-day="Tuesday" data-topic="XPath" data-begin="8:00 a.m." data-end="11:00 a.m.">8:00 a.m.</td>
+						<td class="clickable end-time" data-day="Tuesday" data-topic="XPath" data-begin="8:00 a.m." data-end="11:00 a.m.">11:00 a.m.</td>
+						<td class="clickable topic-cell" data-day="Tuesday" data-topic="XPath" data-begin="8:00 a.m." data-end="11:00 a.m.">XPath</td>
+					</tr>
+					<tr>
+						<td class="clickable begin-time" data-day="Tuesday" data-topic="XSL Transformations" data-begin="11:00 a.m." data-end="5:00 p.m.">11:00 a.m.</td>
+						<td class="clickable end-time" data-day="Tuesday" data-topic="XSL Transformations" data-begin="11:00 a.m." data-end="2:00 p.m.">2:00 p.m.</td>
+						<td class="clickable topic-cell" data-day="Tuesday" data-topic="XSL Transformations" data-begin="11:00 a.m." data-end="2:00 p.m.">XSL Transformations</td>
+					</tr>
+					<tr>
+						<td class="clickable begin-time" data-day="Tuesday" data-topic="XSL Transformations" data-begin="2:00 p.m." data-end="5:00 p.m.">2:00 p.m.</td>
+						<td class="clickable end-time" data-day="Tuesday" data-topic="XSL Transformations" data-begin="2:00 p.m." data-end="5:00 p.m.">5:00 p.m.</td>
+						<td class="clickable topic-cell" data-day="Tuesday" data-topic="XSL Transformations" data-begin="2:00 p.m." data-end="5:00 p.m.">XSL Transformations</td>
+					</tr>
+					<tr>
+						<td>Wednesday</td>
+						<td class="clickable begin-time" data-day="Wednesday" data-topic="XSL Formatting Objects" data-begin="8:00 a.m." data-end="12:00 p.m.">8:00 a.m.</td>
+						<td class="clickable end-time" data-day="Wednesday" data-topic="XSL Formatting Objects" data-begin="8:00 a.m." data-end="12:00 p.m.">12:00 p.m.</td>
+						<td class="clickable topic-cell" data-day="Wednesday" data-topic="XSL Formatting Objects" data-begin="8:00 a.m." data-end="12:00 p.m.">XSL Formatting Objects</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="table-key" aria-label="Table colour key">
+			<span><i class="key-colour begin-key"></i> Begin time</span>
+			<span><i class="key-colour end-key"></i> End time</span>
+		</div>
+
+		<section class="details-section">
+			<h2>Last Selected Schedule</h2>
+			<p id="last-schedule">No schedule selected yet.</p>
+			<div class="session-info">
+				<p id="session-count">Schedules Viewed This Session: 0</p>
+				<p id="recent-views">Recent Views: None</p>
+			</div>
+			<div class="topic-editor">
+				<label for="topic-input">Change Topic</label>
+				<div class="topic-editor-row">
+					<input id="topic-input" type="text" placeholder="Enter a new topic">
+					<button id="change-topic" type="button">Update Topic</button>
+				</div>
+			</div>
+			<button id="clear-history" type="button">Clear History</button>
+		</section>
+	</main>
+
+	<script src="script.js"></script>
+</body>
+</html>
